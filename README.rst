@@ -1,6 +1,5 @@
-===
 OpenDKIM
-===
+========
 
 Formulas to set up and configure the OpenDKIM service.
 
