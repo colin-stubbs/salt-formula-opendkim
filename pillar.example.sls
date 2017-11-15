@@ -5,6 +5,11 @@ opendkim:
   service:
     manage: True
     name: opendkim
+  firewall:
+    manage_permit: True
+    type: firewalld
+    zone: public
+    port: 8891
   config:
     manage: True
     options:
