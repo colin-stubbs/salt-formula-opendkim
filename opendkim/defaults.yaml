@@ -1,0 +1,47 @@
+opendkim:
+  lookup:
+    pkgs:
+      - opendkim
+    user: opendkim
+    group: opendkim
+    locations:
+      config_file: '/etc/opendkim.conf'
+      sysconfig_file: '/etc/sysconfig/opendkim'
+      pid_file: '/var/run/opendkim/opendkim.pid'
+      base_config_dir: '/etc/opendkim'
+      keys_dir: '/etc/opendkim/keys'
+      ExternalIgnoreList: '/etc/opendkim/ExternalIgnoreList'
+      InternalHosts: '/etc/opendkim/InternalHosts'
+      KeyTable: '/etc/opendkim/KeyTable'
+      SigningTable: '/etc/opendkim/SigningTable'
+  service:
+    manage: True
+    name: opendkim
+  config:
+    manage: True
+    options:
+      Syslog: 'yes'
+      SyslogSuccess: 'yes'
+      Canonicalization: 'relaxed/simple'
+      Domain: 'example.com'
+      Selector: 'default'
+      KeyFile: '/var/db/dkim/example.com.private'
+      Socket: 'inet:8891@localhost'
+      ReportAddress: 'postmaster@example.com'
+      SendReports: 'yes'
+    default_key:
+      generate: False
+      options: "--restrict"
+      selector: "default"
+    ExternalIgnoreList:
+      - 127.0.0.1
+      - ::1
+    InternalHosts:
+      - 127.0.0.1
+      - ::1
+  sysconfig:
+    manage: True
+    variables:
+      OPTIONS: "'-x /etc/opendkim.conf -P /var/run/opendkim/opendkim.pid'"
+      DKIM_SELECTOR: 'default'
+      DKIM_KEYDIR: '/etc/opendkim/keys'

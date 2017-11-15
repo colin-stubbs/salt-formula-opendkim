@@ -1,0 +1,10 @@
+# /etc/opendkim/ExternalIgnoreList
+#
+# WARNING: This file is managed by Salt Stack.
+#
+
+{% for entry in ExternalIgnoreList -%}
+{{ entry }}
+{% endfor %}
+# EOF
+

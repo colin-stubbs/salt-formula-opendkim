@@ -1,0 +1,10 @@
+# /etc/opendkim/InternalHosts
+#
+# WARNING: This file is managed by Salt Stack.
+#
+
+{% for entry in InternalHosts -%}
+{{ entry }}
+{% endfor %}
+# EOF
+

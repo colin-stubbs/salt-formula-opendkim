@@ -1,0 +1,10 @@
+# /etc/sysconfig/opendkim
+#
+# WARNING: This file is managed by Salt Stack.
+#
+
+{% for name, value in sysconfig_variables.items() -%}
+{{ name }}={{ value }}
+{% endfor %}
+# EOF
+

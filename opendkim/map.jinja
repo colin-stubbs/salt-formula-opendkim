@@ -1,0 +1,8 @@
+{% import_yaml 'opendkim/defaults.yaml' as default_settings %}
+
+{% set opendkim_settings = salt['pillar.get'](
+    'opendkim',
+    default=default_settings.opendkim,
+    merge=True
+  )
+%}

@@ -1,0 +1,12 @@
+# /etc/opendkim/KeyTable
+#
+# WARNING: This file is managed by Salt Stack.
+#
+
+{% for name, key in KeyTable.items() -%}
+{% if 'domain' in key and 'record' in key and 'key_file' in key -%}
+{{ name }} {{ key.domain }}:{{ key.record }}:{{ key_file_location }}/{{ key.key_file }}.private
+{% endif -%}
+{% endfor %}
+# EOF
+
