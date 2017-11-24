@@ -26,10 +26,7 @@ include:
 {% for name, key_content in opendkim_settings.get('keys', {}).items() %}
 {{ opendkim_settings.lookup.locations.keys_dir }}/{{ name }}.private:
   file.managed:
-    - source: salt://opendkim/files/key.jinja
-    - template: jinja
-    - context:
-      key: "{{ key_content }}"
+    - contents_pillar: opendkim:keys:{{ name }}
     - user: {{ opendkim_settings.lookup.user }}
     - group: {{ opendkim_settings.lookup.group }}
     - file_mode: 0600

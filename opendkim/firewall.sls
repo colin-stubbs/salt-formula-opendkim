@@ -9,7 +9,7 @@ include:
 {% if opendkim_settings.firewall.manage_permit == True %}
 {% if opendkim_settings.firewall.type == 'firewalld' %}
 
-{# Define OpenDKIM service in firewalld #}
+{# permit access to service using firewalld #}
 
 opendkim-firewalld-service:
   cmd.run:
