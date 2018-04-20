@@ -4,7 +4,7 @@
 
 opendkim-genkey-default:
   cmd.run:
-    - name: opendkim-genkey --domain={{ domain }} :wq!
+    - name: opendkim-genkey --domain={{ domain }}
 
 
 {# EOF #}
