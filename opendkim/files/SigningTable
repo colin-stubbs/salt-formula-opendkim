@@ -3,8 +3,9 @@
 # WARNING: This file is managed by Salt Stack.
 #
 
-{% for name, key in SigningTable.items() -%}
+{% from "opendkim/map.jinja" import opendkim_settings with context %}
+
+{% for name, key in opendkim_settings.config.SigningTable.items() -%}
 {{ name }} {{ key }}
 {% endfor %}
 # EOF
-

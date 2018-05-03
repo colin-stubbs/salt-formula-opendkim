@@ -19,8 +19,6 @@ include:
     - mode: 0644
     - require:
       - pkg: opendkim
-    - context:
-      sysconfig_variables: {{ opendkim_settings.sysconfig.variables }}
 {% endif %}
 
 service-opendkim:
@@ -52,4 +50,3 @@ service-opendkim:
       - file: {{ opendkim_settings.lookup.locations.config_file }}
 {% endif %}
 {% endif %}
-

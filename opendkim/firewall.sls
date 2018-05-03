@@ -6,6 +6,7 @@ include:
 {## import settings from map.jinja ##}
 {% from "opendkim/map.jinja" import opendkim_settings with context %}
 
+{% if 'firewall' in opendkim_settings %}
 {% if opendkim_settings.firewall.manage_permit == True %}
 {% if opendkim_settings.firewall.type == 'firewalld' %}
 
@@ -26,6 +27,7 @@ opendkim-firewalld-reload:
 
 {# TODO - run iptables commands to add rule/s #}
 
+{% endif %}
 {% endif %}
 {% endif %}
 

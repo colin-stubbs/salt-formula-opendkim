@@ -3,8 +3,9 @@
 # WARNING: This file is managed by Salt Stack.
 #
 
-{% for entry in InternalHosts -%}
+{% from "opendkim/map.jinja" import opendkim_settings with context %}
+
+{% for entry in  opendkim_settings.config.InternalHosts|default([]) -%}
 {{ entry }}
 {% endfor %}
 # EOF
-

@@ -17,8 +17,6 @@ include:
   file.managed:
     - source: salt://opendkim/files/KeyTable
     - template: jinja
-    - context:
-      KeyTable: {{ opendkim_settings.config.KeyTable|default({}) }}
       key_file_location: {{ opendkim_settings.lookup.locations.keys_dir }}
     - user: {{ opendkim_settings.lookup.user }}
     - group: {{ opendkim_settings.lookup.group }}
@@ -30,8 +28,6 @@ include:
   file.managed:
     - source: salt://opendkim/files/SigningTable
     - template: jinja
-    - context:
-      SigningTable: {{ opendkim_settings.config.SigningTable|default({}) }}
     - user: {{ opendkim_settings.lookup.user }}
     - group: {{ opendkim_settings.lookup.group }}
     - mode: 0640
@@ -42,8 +38,6 @@ include:
   file.managed:
     - source: salt://opendkim/files/ExternalIgnoreList
     - template: jinja
-    - context:
-      ExternalIgnoreList: {{ opendkim_settings.config.ExternalIgnoreList|default([]) }}
     - user: {{ opendkim_settings.lookup.user }}
     - group: {{ opendkim_settings.lookup.group }}
     - mode: 0640
@@ -54,8 +48,6 @@ include:
   file.managed:
     - source: salt://opendkim/files/InternalHosts
     - template: jinja
-    - context:
-      InternalHosts: {{ opendkim_settings.config.InternalHosts|default([]) }}
     - user: {{ opendkim_settings.lookup.user }}
     - group: {{ opendkim_settings.lookup.group }}
     - mode: 0640
@@ -66,8 +58,6 @@ include:
   file.managed:
     - source: salt://opendkim/files/opendkim.conf
     - template: jinja
-    - context:
-      config_options: {{ opendkim_settings.config.options }}
     - user: {{ opendkim_settings.lookup.user }}
     - group: {{ opendkim_settings.lookup.group }}
     - mode: 0644
@@ -76,4 +66,3 @@ include:
 {% endif %}
 
 {# EOF #}
-

@@ -3,10 +3,11 @@
 # WARNING: This file is managed by Salt Stack.
 #
 
-{% for name, key in KeyTable.items() -%}
+{% from "opendkim/map.jinja" import opendkim_settings with context %}
+
+{% for name, key in opendkim_settings.config.KeyTable.items() -%}
 {% if 'domain' in key and 'record' in key and 'key_file' in key -%}
 {{ name }} {{ key.domain }}:{{ key.record }}:{{ key_file_location }}/{{ key.key_file }}.private
 {% endif -%}
 {% endfor %}
 # EOF
-

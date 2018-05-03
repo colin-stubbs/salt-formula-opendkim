@@ -3,8 +3,9 @@
 # WARNING: This file is managed by Salt Stack.
 #
 
-{% for name, value in sysconfig_variables.items() -%}
+{% from "opendkim/map.jinja" import opendkim_settings with context %}
+
+{% for name, value in opendkim_settings.sysconfig.variables.items() -%}
 {{ name }}={{ value }}
 {% endfor %}
 # EOF
-
