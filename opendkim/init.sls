@@ -6,7 +6,7 @@
 {% if 'lookup' in opendkim_settings and 'pkgs' in opendkim_settings.lookup %}
 opendkim:
   pkg.installed:
-    - pkgs: {{ opendkim_settings.lookup.pkgs }}
+    - pkgs: {{ opendkim_settings.lookup.pkgs | tojson }}
 {% endif %}
 
 {# EOF #}
